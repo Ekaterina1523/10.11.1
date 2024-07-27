@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2487.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px 'Helvetica Neue'; color: #2b2b2b; -webkit-text-stroke: #2b2b2b; background-color: #ffffff}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px 'Helvetica Neue'; color: #2b2b2b; -webkit-text-stroke: #2b2b2b; background-color: #ffffff; min-height: 16.0px}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html lang="ru"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;Управление фруктами&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;style&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>body {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-family: Arial, sans-serif;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#fruit-list {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>list-style-type: none;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;h1&gt;Управление фруктами&lt;/h1&gt;</span></p>
+<p class="p1"><span class="s1">&lt;button id="shuffle-btn"&gt;Перемешать&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1">&lt;button id="filter-btn"&gt;Фильтровать по весу&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1">&lt;button id="sort-btn"&gt;Сортировать по цвету&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;h2&gt;Добавить фрукт&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1">&lt;input type="text" id="fruit-kind" placeholder="Укажите фрукт"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;input type="text" id="fruit-color" placeholder="Цвет"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;input type="number" id="fruit-weight" placeholder="Вес"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;button id="add-fruit-btn"&gt;Добавить фрукт&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;ul id="fruit-list"&gt;&lt;/ul&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>let fruits = [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>{ kind: 'яблоко', color: 'красный', weight: 22 },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>{ kind: 'банан', color: 'жёлтый', weight: 12 },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>{ kind: 'груша', color: 'зелёный', weight: 47 },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>{ kind: 'вишня', color: 'красный', weight: 5 },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>{ kind: 'слива', color: 'фиолетовый', weight: 16 },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>];</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function shuffle(array) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>let shuffledArray = [...array];</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>for (let i = shuffledArray.length - 1; i &gt; 0; i--) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const j = Math.floor(Math.random() * (i + 1));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>[shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (JSON.stringify(shuffledArray) === JSON.stringify(array)) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>alert('Порядок не изменился.');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>return shuffledArray;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function filterByWeight(array, min, max) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>return array.filter(fruit =&gt; fruit.weight &gt;= min &amp;&amp; fruit.weight &lt;= max);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function bubbleSort(array, comparator) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>let sortedArray = [...array];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>for (let i = 0; i &lt; sortedArray.length; i++) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>for (let j = 0; j &lt; sortedArray.length - i - 1; j++) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (comparator(sortedArray[j], sortedArray[j + 1]) &gt; 0) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>[sortedArray[j], sortedArray[j + 1]] = [sortedArray[j + 1], sortedArray[j]];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>return sortedArray;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function comparationColor(fruitA, fruitB) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const priority = ['красный', 'оранжевый', 'жёлтый', 'зелёный', 'синий', 'фиолетовый'];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>return priority.indexOf(fruitA.color) - priority.indexOf(fruitB.color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function addFruit(kind, color, weight) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (!kind || !color || !weight) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>alert('Все поля должны быть заполнены!');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>return;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>fruits.push({ kind, color, weight });</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>renderFruits(fruits);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function renderFruits(list) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const ul = document.getElementById('fruit-list');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>ul.innerHTML = ''; // Очистить предыдущий список</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>list.forEach((fruit, index) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const li = document.createElement('li');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>li.textContent = `${index}: ${fruit.kind}, цвет: ${fruit.color}, вес: ${fruit.weight}`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>ul.appendChild(li);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>document.getElementById('shuffle-btn').addEventListener('click', () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>fruits = shuffle(fruits);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>renderFruits(fruits);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>});</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>document.getElementById('filter-btn').addEventListener('click', () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const minWeight = parseInt(prompt('Введите минимальный вес:'), 10);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const maxWeight = parseInt(prompt('Введите максимальный вес:'), 10);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (!isNaN(minWeight) &amp;&amp; !isNaN(maxWeight)) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const filteredFruits = filterByWeight(fruits, minWeight, maxWeight);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>renderFruits(filteredFruits);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>});</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>document.getElementById('sort-btn').addEventListener('click', () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const sortedFruits = bubbleSort(fruits, comparationColor);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>renderFruits(sortedFruits);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>});</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>document.getElementById('add-fruit-btn').addEventListener('click', () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const kind = document.getElementById('fruit-kind').value;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const color = document.getElementById('fruit-color').value;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const weight = parseInt(document.getElementById('fruit-weight').value, 10);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>addFruit(kind, color, weight);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>});</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>renderFruits(fruits);</span></p>
+<p class="p1"><span class="s1">&lt;/script&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+</body>
+</html>
